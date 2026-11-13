@@ -1,0 +1,16 @@
+name: corregir-chofer
+on:
+  workflow_dispatch:
+jobs:
+  corregir:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restaurar credenciales demo de CH-01
+        run: |
+          TOK=$(curl -s -m 15 -X POST http://132.226.70.25:8377/api/auth/admin -H 'Content-Type: application/json' -d '{"usuario":"admin","password":"staffride"}' | python3 -c "import sys,json;print(json.load(sys.stdin).get('token',''))")
+          echo "== PUT /api/choferes/1 =="
+          curl -s -m 15 -X PUT http://132.226.70.25:8377/api/choferes/1 -H "Authorization: Bearer $TOK" -H 'Content-Type: application/json' -d '{"codigo":"CH-01","pin":"1234"}'; echo
+          echo "== LOGIN CH-01 tras corrección =="
+          curl -s -m 15 -X POST http://132.226.70.25:8377/api/auth/chofer -H 'Content-Type: application/json' -d '{"codigo":"CH-01","pin":"1234"}' | head -c 160; echo
+          echo "== CHOFERES FINAL =="
+          curl -s -m 15 http://132.226.70.25:8377/api/choferes -H "Authorization: Bearer $TOK"; echo
