@@ -1,0 +1,17 @@
+name: probar-choferes
+on:
+  workflow_dispatch:
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Leer choferes en vivo vía admin
+        run: |
+          TOK=$(curl -s -m 15 -X POST http://132.226.70.25:8377/api/auth/admin -H 'Content-Type: application/json' -d '{"usuario":"admin","password":"staffride"}' | python3 -c "import sys,json;print(json.load(sys.stdin).get('token',''))")
+          echo "token obtenido: ${TOK:0:8}..."
+          echo "== GET /api/choferes =="
+          curl -s -m 15 http://132.226.70.25:8377/api/choferes -H "Authorization: Bearer $TOK"; echo
+          echo "== LOGIN CH-02 string =="
+          curl -s -m 15 -X POST http://132.226.70.25:8377/api/auth/chofer -H 'Content-Type: application/json' -d '{"codigo":"CH-02","pin":"1234"}'; echo
+          echo "== LOGIN CH-01 pin NUMERO =="
+          curl -s -m 15 -X POST http://132.226.70.25:8377/api/auth/chofer -H 'Content-Type: application/json' -d '{"codigo":"CH-01","pin":1234}'; echo
