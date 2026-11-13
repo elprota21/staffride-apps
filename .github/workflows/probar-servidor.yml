@@ -1,0 +1,19 @@
+name: probar-servidor
+on:
+  workflow_dispatch:
+jobs:
+  probar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sondas contra el servidor StaffRide
+        run: |
+          echo "== RAIZ =="
+          curl -s -m 15 -o /dev/null -w 'HTTP %{http_code}\n' http://132.226.70.25:8377/
+          echo "== CLIENTE =="
+          curl -s -m 15 -o /dev/null -w 'HTTP %{http_code}\n' http://132.226.70.25:8377/cliente
+          echo "== LOGIN CHOFER CH-01 =="
+          curl -s -m 15 -X POST http://132.226.70.25:8377/api/auth/chofer -H 'Content-Type: application/json' -d '{"codigo":"CH-01","pin":"1234"}' | head -c 220; echo
+          echo "== LOGIN EMPLEADO E-01 =="
+          curl -s -m 15 -X POST http://132.226.70.25:8377/api/auth/empleado -H 'Content-Type: application/json' -d '{"codigo":"E-01"}' | head -c 220; echo
+          echo "== LOGIN ADMIN =="
+          curl -s -m 15 -X POST http://132.226.70.25:8377/api/auth/admin -H 'Content-Type: application/json' -d '{"usuario":"admin","password":"staffride"}' | head -c 220; echo
