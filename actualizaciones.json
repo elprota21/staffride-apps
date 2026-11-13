@@ -1,1 +1,14 @@
-{"chofer":{"apk":"https://github.com/elprota21/staffride-apps/releases/download/v1.3/StaffRideChofer.apk","notas":"Primera versión con actualización automática dentro de la app y conexión al servidor nuevo.","versionCode":4,"versionName":"1.3"},"empleado":{"apk":"https://github.com/elprota21/staffride-apps/releases/download/v1.3/StaffRideEmpleado.apk","notas":"Primera versión con actualización automática dentro de la app y conexión al servidor nuevo.","versionCode":4,"versionName":"1.3"}}
+{
+  "chofer": {
+    "versionCode": 5,
+    "versionName": "1.4",
+    "apk": "https://github.com/elprota21/staffride-apps/releases/download/v1.4/StaffRideChofer.apk",
+    "notas": "La app se conecta ahora a la dirección fija y definitiva del servidor."
+  },
+  "empleado": {
+    "versionCode": 5,
+    "versionName": "1.4",
+    "apk": "https://github.com/elprota21/staffride-apps/releases/download/v1.4/StaffRideEmpleado.apk",
+    "notas": "La app se conecta ahora a la dirección fija y definitiva del servidor."
+  }
+}
