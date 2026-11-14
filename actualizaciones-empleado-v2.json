@@ -1,1 +1,1 @@
-{"apkUrl":"https://github.com/elprota21/staffride-apps/releases/download/v2-empleado-1.2.8/StaffRideEmpleado-v2-1.2.8.apk","notas":"El mapa ahora dibuja el recorrido por las calles (la ruta rápida por carretera), no líneas rectas entre paradas.","versionCode":11,"versionName":"1.2.8"}
+{"apkUrl":"https://github.com/elprota21/staffride-apps/releases/download/v2-empleado-1.2.9/StaffRideEmpleado-v2-1.2.9.apk","notas":"Recorrido estilo Uber: la línea se recalcula en vivo desde donde va el autobús, pasando solo por las paradas que faltan.","versionCode":12,"versionName":"1.2.9"}
